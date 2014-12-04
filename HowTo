@@ -1,0 +1,13 @@
+How To View Clonezilla Images
+
+Example:
+
+mkdir /Data/clone
+touch /Data/clone/hda1.iso
+
+sudo cat /Data/2014-12-03-16-img/sdb1.ext4-ptcl-img.gz.* | sudo gzip -d -c | sudo partclone.restore -C -s - -O /Data/clone/hda1.iso
+
+cd /Data/clone/
+e2fsck -f hda1.iso (y)
+resize2fs -f hda1.iso
+sudo mount -o loop -t ext4 /Data/clone/hda1.iso /mnt
